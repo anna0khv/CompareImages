@@ -1,0 +1,32 @@
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.exe
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.deps.json
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.runtimeconfig.json
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.dll
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.pdb
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.Form1.resources
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.csproj.GenerateResource.cache
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.GeneratedMSBuildEditorConfig.editorconfig
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.AssemblyInfoInputs.cache
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.AssemblyInfo.cs
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.csproj.CoreCompileInputs.cache
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.dll
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\refint\wfaCompare.dll
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.pdb
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.genruntimeconfig.cache
+D:\school\5sem\mobile\compare images\wfaCompare\wfaCompare\obj\Debug\net9.0-windows\ref\wfaCompare.dll
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.exe
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.deps.json
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.runtimeconfig.json
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.dll
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\bin\Debug\net9.0-windows\wfaCompare.pdb
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.Form1.resources
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.csproj.GenerateResource.cache
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.GeneratedMSBuildEditorConfig.editorconfig
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.AssemblyInfoInputs.cache
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.AssemblyInfo.cs
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.csproj.CoreCompileInputs.cache
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.dll
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\refint\wfaCompare.dll
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.pdb
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.genruntimeconfig.cache
+D:\school\5sem\mobile\compare images\wfaCompare — копия\wfaCompare\obj\Debug\net9.0-windows\ref\wfaCompare.dll

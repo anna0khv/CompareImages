@@ -13,20 +13,23 @@ namespace wfaCompare
             this.Resize += Form1_Resize;
         }
 
+        public int size = 1;
+        public Color color = Color.Black;
+
         private void Form1_Resize(object? sender, EventArgs e)
         {
             if (ic.pictureBoxes.Count > 0)
             {
                 //if (ic.VERTICAL)
                 //{
-                    float nh = ic.bitmaps[0].Height;
-                    _defaultZoomFactor = (this.Height - 140) / nh;
-                    if (!ic.VERTICAL && ic.bitmaps.Count() != 1)
-                    {
-                        nh = ic.bitmaps[0].Width;
-                        _defaultZoomFactor =
-                            ((this.Width / 2) - 10) / (nh);
-                    }
+                float nh = ic.bitmaps[0].Height;
+                _defaultZoomFactor = (this.Height - 140) / nh;
+                if (!ic.VERTICAL && ic.bitmaps.Count() != 1)
+                {
+                    nh = ic.bitmaps[0].Width;
+                    _defaultZoomFactor =
+                        ((this.Width / 2) - 10) / (nh);
+                }
                 //} else
                 //{
                 //    float nh = ic.bitmaps[0].Width;
@@ -75,11 +78,11 @@ namespace wfaCompare
                 {
                     //if (ic.VERTICAL)
                     //{
-                        float nh = temp_bm.Height;
-                        _defaultZoomFactor = (this.Height - 140) / nh;
-                        //if (ic.bitmaps.Count() > 1 && !ic.VERTICAL)
-                        //{
-                        //}
+                    float nh = temp_bm.Height;
+                    _defaultZoomFactor = (this.Height - 140) / nh;
+                    //if (ic.bitmaps.Count() > 1 && !ic.VERTICAL)
+                    //{
+                    //}
                     //else
                     //{
                     //    float nh = temp_bm.Width;
@@ -102,7 +105,7 @@ namespace wfaCompare
                 ic.SetLabel(dlg.FileName, temp_bm);
                 ic.SetBitmaps(temp_bm);
 
-                
+
 
                 (List<PictureBox> pbs, List<Label> tbs, List<System.Windows.Forms.Button> btns) = ic.ShowImages(this);  // получение координат изображений
 
@@ -194,7 +197,7 @@ namespace wfaCompare
                 e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 e.Graphics.DrawImage(ic.bitmaps[index], positionMas[index].X, positionMas[index].Y, newWidth, newHeight);
 
-                Pen myPen = new Pen(Color.Black, 1);
+                Pen myPen = new Pen(color, size);
                 if (checkBox1.Checked)
                 {
                     e.Graphics.DrawLine(myPen, pb.Width / 3, 0, pb.Width / 3, pb.Height);
@@ -299,7 +302,7 @@ namespace wfaCompare
         private void ChangeRad(object sender, MouseEventArgs e)
         {
             if (Control.ModifierKeys == Keys.Shift)
-                rad += e.Delta > 0 ? 2 : -2;
+                rad += e.Delta > 0 ? 5 : -5;
 
             foreach (PictureBox pb in ic.pictureBoxes)
                 pb.Invalidate();
@@ -463,6 +466,18 @@ namespace wfaCompare
                 //    pb.Invalidate();
                 Form1_Resize(this, EventArgs.Empty);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LineEditor lineEditor = new LineEditor(size, color);
+            if (lineEditor.ShowDialog() == DialogResult.OK)
+            {
+                size = lineEditor.mySize;
+                color = lineEditor.myColor;
+            }
+            foreach (PictureBox pb in ic.pictureBoxes)
+                pb.Invalidate();
         }
     }
 }

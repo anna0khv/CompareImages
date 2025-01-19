@@ -39,14 +39,15 @@
             panel1 = new Panel();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
+            button3 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(12, 12);
+            button1.Location = new Point(12, 9);
             button1.Name = "button1";
-            button1.Size = new Size(144, 29);
+            button1.Size = new Size(144, 27);
             button1.TabIndex = 0;
             button1.Text = "Выбрать файлы";
             button1.UseVisualStyleBackColor = true;
@@ -114,9 +115,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(732, 12);
+            button2.Location = new Point(12, 39);
             button2.Name = "button2";
-            button2.Size = new Size(117, 54);
+            button2.Size = new Size(144, 27);
             button2.TabIndex = 6;
             button2.Text = "Отменить все изменения";
             button2.UseVisualStyleBackColor = true;
@@ -168,11 +169,22 @@
             radioButton1.UseVisualStyleBackColor = true;
             radioButton1.CheckedChanged += radioButton1_CheckedChanged;
             // 
+            // button3
+            // 
+            button3.Location = new Point(723, 12);
+            button3.Name = "button3";
+            button3.Size = new Size(135, 55);
+            button3.TabIndex = 12;
+            button3.Text = "Редактор линий";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1015, 450);
+            ClientSize = new Size(1003, 450);
+            Controls.Add(button3);
             Controls.Add(panel1);
             Controls.Add(checkBox6);
             Controls.Add(button2);
@@ -203,5 +215,6 @@
         private Panel panel1;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
+        private Button button3;
     }
 }

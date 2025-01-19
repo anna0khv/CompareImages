@@ -31,3 +31,4 @@ D:\school\5sem\mobile\compare images\CompareImages\wfaCompare\obj\Debug\net9.0-w
 D:\school\5sem\mobile\compare images\CompareImages\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.pdb
 D:\school\5sem\mobile\compare images\CompareImages\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.genruntimeconfig.cache
 D:\school\5sem\mobile\compare images\CompareImages\wfaCompare\obj\Debug\net9.0-windows\ref\wfaCompare.dll
+D:\school\5sem\mobile\compare images\CompareImages\wfaCompare\obj\Debug\net9.0-windows\wfaCompare.LineEditor.resources

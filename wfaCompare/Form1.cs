@@ -20,8 +20,7 @@ namespace wfaCompare
         {
             if (ic.pictureBoxes.Count > 0)
             {
-                //if (ic.VERTICAL)
-                //{
+                
                 float nh = ic.bitmaps[0].Height;
                 _defaultZoomFactor = (this.Height - 140) / nh;
                 if (!ic.VERTICAL && ic.bitmaps.Count() != 1)

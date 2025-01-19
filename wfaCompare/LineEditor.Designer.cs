@@ -157,7 +157,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "LineEditor";
-            Text = "LineEditor";
+            Text = "Редактор линий";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();

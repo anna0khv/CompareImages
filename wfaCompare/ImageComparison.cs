@@ -127,6 +127,7 @@ namespace wfaCompare
 
                 textBoxes[counter].Location = new Point(x, y - delta_y);
                 textBoxes[counter].Size = new Size(image_w - btn_size, delta_y);
+                textBoxes[counter].BackColor = Color.Gray;
 
                 buttons[counter].Location = new Point(x + image_w - btn_size, y - delta_y);
                 buttons[counter].Size = new Size(btn_size, btn_size);

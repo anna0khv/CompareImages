@@ -8,23 +8,12 @@ namespace wfaCompare
 {
     internal class ImageComparison
     {
-        public List<PictureBox> pictureBoxes = new List<PictureBox>(); // Инициализация списка
+        public List<PictureBox> pictureBoxes = new List<PictureBox>();
         public List<Label> textBoxes = new List<Label>();
-        //public int delta_x = 10;
-        //public int delta_y = 10;
-
-        //public int x = 20;
-        //public int y = 50 + 40;
-        //public int size_image = 500;
-
-        //public int image_w = 500;
-        //public int image_h = 500;
-
+        
         public void SetImage(PictureBox pb)
         {
-            pictureBoxes.Add(pb); // Добавляем элемент в список
-            //textBoxes.Add(new Label());
-            //textBoxes.Last().Text = pb.Name;
+            pictureBoxes.Add(pb);
 
         }
 
@@ -38,23 +27,28 @@ namespace wfaCompare
         public (List<PictureBox>, List<Label>) ShowImages()
         {
 
-            var counter = 0;
+            int counter = 0;
 
-            var delta_x = 10;
-            var delta_y = 10;
+            // start position
+
+            const int x_start = 20;
+            const int y_start = 130;
+
+            // position for calculating
 
             var x = 20;
-            var y = 50+40+40;
-            var size_image = 500;
+            var y = 130;
 
-            //var image_h = (int)pictureBoxes[0].Image.PhysicalDimension.Height;
-            //var image_w = (int)pictureBoxes[0].Image.PhysicalDimension.Width;
+            // space between images 
+
+            var delta_x = 10;
+            var delta_y = 40;
+
+            // size of image 
 
             var image_w = 500;
             var image_h = 500;
 
-            //pb1.SizeMode = PictureBoxSizeMode.Zoom;
-            //pb1.Size = new Size(500, 500 * pb1.Height / pb1.Width);
             foreach (PictureBox pb in pictureBoxes)
             {
                 switch (counter)
@@ -65,8 +59,8 @@ namespace wfaCompare
                         x += delta_x + image_w; 
                         break;
                     case 2:
-                        x = 20;
-                        y = 50 + delta_y + image_h;
+                        x = x_start;
+                        y = y_start + delta_y + (image_w * pb.Image.Height / pb.Image.Width);
                         break;
                     case 3:
                         x += delta_x + image_w;
@@ -76,19 +70,14 @@ namespace wfaCompare
                 }
                 pb.Location = new Point(x, y);
                 pb.SizeMode = PictureBoxSizeMode.Zoom;
-                pb.Size = new Size(500, 500 * pb.Image.Height / pb.Image.Width);
+                pb.Size = new Size(image_w, image_w * pb.Image.Height / pb.Image.Width);
 
 
-                textBoxes[counter].Location = new Point(x, y - 40);
-                textBoxes[counter].Size = new Size(500, 40);
+                textBoxes[counter].Location = new Point(x, y - delta_y);
+                textBoxes[counter].Size = new Size(image_w, delta_y);
                 counter++;
             }
             return (pictureBoxes, textBoxes);
-
-        }
-
-        public void PrintStaticLines()
-        {
 
         }
        

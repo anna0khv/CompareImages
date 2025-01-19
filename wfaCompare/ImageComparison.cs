@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace wfaCompare
 {
@@ -10,6 +12,7 @@ namespace wfaCompare
     {
         public List<PictureBox> pictureBoxes = new List<PictureBox>();
         public List<Label> textBoxes = new List<Label>();
+        public List<Bitmap> bitmaps = new List<Bitmap>();
         
         public void SetImage(PictureBox pb)
         {
@@ -24,14 +27,19 @@ namespace wfaCompare
 
         }
 
-        public (List<PictureBox>, List<Label>) ShowImages()
+        public void SetBitmaps(Bitmap bmp)
+        {
+            bitmaps.Add(bmp);
+        }
+
+        public (List<PictureBox>, List<Label>) ShowImages(Form form)
         {
 
             int counter = 0;
 
             // start position
 
-            const int x_start = 20;
+            const int x_start = 10;
             const int y_start = 130;
 
             // position for calculating
@@ -46,37 +54,26 @@ namespace wfaCompare
 
             // size of image 
 
-            var image_w = 500;
-            var image_h = 500;
+            int count_pbs = pictureBoxes.Count; // количество картинок
+
+            var image_w = (form.Width) / count_pbs - 2 * x_start;
+            var image_h = form.Height - y_start - x_start - 50;
 
             foreach (PictureBox pb in pictureBoxes)
             {
-                switch (counter)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        x += delta_x + image_w; 
-                        break;
-                    case 2:
-                        x = x_start;
-                        y = y_start + delta_y + (image_w * pb.Image.Height / pb.Image.Width);
-                        break;
-                    case 3:
-                        x += delta_x + image_w;
-                        break;
-                    default:
-                        break;
-                }
-                pb.Location = new Point(x, y);
-                pb.SizeMode = PictureBoxSizeMode.Zoom;
-                pb.Size = new Size(image_w, image_w * pb.Image.Height / pb.Image.Width);
+                int index = pictureBoxes.IndexOf(pb);
+                x = x_start + index * (image_w +  delta_x);
 
+                pb.Location = new Point(x, y);
+                pb.SizeMode = PictureBoxSizeMode.Normal;
+                pb.Size = new Size(image_w, image_h);
 
                 textBoxes[counter].Location = new Point(x, y - delta_y);
                 textBoxes[counter].Size = new Size(image_w, delta_y);
+
                 counter++;
             }
+
             return (pictureBoxes, textBoxes);
 
         }

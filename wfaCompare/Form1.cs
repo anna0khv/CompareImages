@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
@@ -8,6 +9,22 @@ namespace wfaCompare
         public Form1()
         {
             InitializeComponent();
+            this.Resize += Form1_Resize;
+        }
+
+        private void Form1_Resize(object? sender, EventArgs e)
+        {
+            float nh = ic.bitmaps[0].Height;
+            _defaultZoomFactor = (this.Height - 140) / nh;
+            _zoomFactor = _defaultZoomFactor;
+            for (int i = 0; i < 4; i++)
+            {
+                zoomMas[i] = _defaultZoomFactor;
+            }
+
+            ic.ShowImages(this);
+            button2_Click(sender, e);
+
         }
 
         ImageComparison ic = new ImageComparison();
@@ -37,22 +54,27 @@ namespace wfaCompare
 
                 if (isFirst)
                 {
-                    float nw = temp_bm.Width;
-                    _defaultZoomFactor = 500.0f / nw;
+                    //float nw = temp_bm.Width;
+                    float nh = temp_bm.Height;
+                    _defaultZoomFactor = (this.Height - 140) / nh;
+
+                    //_defaultZoomFactor = 500.0f / nw;
                     _zoomFactor = _defaultZoomFactor;
-                    for (int i = 0; i < 4;  i++) {
+                    for (int i = 0; i < 4; i++)
+                    {
                         zoomMas[i] = _defaultZoomFactor;
                     }
                     isFirst = false;
                 }
 
-                pb1.Image = temp_bm;
-
+                pb1.Image = null; // Очищаем изображение, чтобы оно не отображалось автоматически
+                pb1.SizeMode = PictureBoxSizeMode.Normal; // Устанавливаем Normal
 
                 ic.SetImage(pb1);
                 ic.SetLabel(dlg.FileName, temp_bm);
+                ic.SetBitmaps(temp_bm);
 
-                (List<PictureBox> pbs, List<Label> tbs) = ic.ShowImages();  // получение координат изображений
+                (List<PictureBox> pbs, List<Label> tbs) = ic.ShowImages(this);  // получение координат изображений
 
                 foreach (PictureBox pb in pbs)
                 {
@@ -67,7 +89,6 @@ namespace wfaCompare
                     pb.MouseMove += PictureBox_MouseMove;
                     pb.MouseUp += PictureBox_MouseUp;
                     pb.Paint += PictureBox_Paint;
-                    //pb.MouseWheel += PictureBox_MouseWheel;
                 }
 
                 foreach (Label tb in tbs)
@@ -91,27 +112,22 @@ namespace wfaCompare
         {
             foreach (PictureBox pb in ic.pictureBoxes)
                 pb.Invalidate();
-            //PictureBoxes_Invalidate(sender);
         }
 
         private void PictureBox_Paint(object sender, PaintEventArgs e)
         {
             PictureBox pb = sender as PictureBox;
 
-            if (pb != null && pb.Image != null)
+            if (pb != null)
             {
                 // Вычисляем новые размеры изображения с учетом масштаба
-                //int index = Array.IndexOf(ic.pictureBoxes, sender as PictureBox);
                 int index = ic.pictureBoxes.IndexOf(sender as PictureBox);
-                //int newWidth = (int)(pb.Image.Width * _zoomFactor);
-                int newWidth = (int)(pb.Image.Width * zoomMas[index]);
-                //int newHeight = (int)(pb.Image.Height * _zoomFactor);
-                int newHeight = (int)(pb.Image.Height * zoomMas[index]);
+                int newWidth = (int)(ic.bitmaps[index].Width * zoomMas[index]);
+                int newHeight = (int)(ic.bitmaps[index].Height * zoomMas[index]);
 
                 // Рисуем изображение с учетом масштаба и положения
                 e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                //e.Graphics.DrawImage(pb.Image, _imagePosition.X, _imagePosition.Y, newWidth, newHeight);
-                e.Graphics.DrawImage(pb.Image, positionMas[index].X, positionMas[index].Y, newWidth, newHeight);
+                e.Graphics.DrawImage(ic.bitmaps[index], positionMas[index].X, positionMas[index].Y, newWidth, newHeight);
 
                 Pen myPen = new Pen(Color.Black, 1);
                 if (checkBox1.Checked)
@@ -250,10 +266,6 @@ namespace wfaCompare
                     }
                 }
 
-                // Перерисовываем PictureBox
-                //(sender as PictureBox).Invalidate();
-                //foreach (PictureBox pb in ic.pictureBoxes)
-                //    pb.Invalidate();
                 PictureBoxes_Invalidate(sender);
             }
         }
@@ -265,8 +277,6 @@ namespace wfaCompare
                 _isDragging = true;
                 _dragStart = e.Location;
             }
-            //foreach (PictureBox pb in ic.pictureBoxes)
-            //    pb.Invalidate();
             PictureBoxes_Invalidate(sender);
         }
 
@@ -278,8 +288,7 @@ namespace wfaCompare
                 int deltaY = e.Y - _dragStart.Y;
 
                 int index = ic.pictureBoxes.IndexOf(sender as PictureBox);
-                //_imagePosition.X += deltaX;
-                //_imagePosition.Y += deltaY;
+
                 positionMas[index].X += deltaX;
                 positionMas[index].Y += deltaY;
                 if (Sync)

@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace wfaCompare
@@ -14,7 +15,8 @@ namespace wfaCompare
 
         private void Form1_Resize(object? sender, EventArgs e)
         {
-            float nh = ic.bitmaps[0].Height;
+            if (ic.pictureBoxes.Count > 0)
+            {float nh = ic.bitmaps[0].Height;
             _defaultZoomFactor = (this.Height - 140) / nh;
             _zoomFactor = _defaultZoomFactor;
             for (int i = 0; i < 4; i++)
@@ -23,7 +25,8 @@ namespace wfaCompare
             }
 
             ic.ShowImages(this);
-            button2_Click(sender, e);
+                button2_Click(sender, e);
+            }
 
         }
 
@@ -74,7 +77,7 @@ namespace wfaCompare
                 ic.SetLabel(dlg.FileName, temp_bm);
                 ic.SetBitmaps(temp_bm);
 
-                (List<PictureBox> pbs, List<Label> tbs) = ic.ShowImages(this);  // получение координат изображений
+                (List<PictureBox> pbs, List<Label> tbs, List<System.Windows.Forms.Button> btns) = ic.ShowImages(this);  // получение координат изображений
 
                 foreach (PictureBox pb in pbs)
                 {
@@ -98,6 +101,18 @@ namespace wfaCompare
                         this.Controls.Add(tb);
                     }
                 }
+
+                foreach (System.Windows.Forms.Button btn in btns)
+                {
+                    if (!this.Controls.Contains(btn)) // Проверяем, добавлен ли уже PictureBox
+                    {
+                        this.Controls.Add(btn);
+                        btn.BringToFront();
+                        btn.Click += Btn_Click;
+                    }
+                }
+
+
                 checkBox1.Enabled = true;
                 checkBox2.Enabled = true;
                 checkBox3.Enabled = true;
@@ -107,6 +122,29 @@ namespace wfaCompare
             }
         }
 
+        private void Btn_Click(object? sender, EventArgs e)
+        {
+            System.Windows.Forms.Button clickedButton = sender as System.Windows.Forms.Button;
+            if (clickedButton != null)
+            {
+                int index = ic.buttons.IndexOf(clickedButton);
+
+                // Удаляем PictureBox, Label и кнопку
+                if (index >= 0 && index < ic.pictureBoxes.Count)
+                {
+                    this.Controls.Remove(ic.pictureBoxes[index]);
+                    this.Controls.Remove(ic.textBoxes[index]);
+                    this.Controls.Remove(ic.buttons[index]);
+
+                    ic.pictureBoxes.RemoveAt(index);
+                    ic.textBoxes.RemoveAt(index);
+                    ic.buttons.RemoveAt(index);
+
+                    // Обновляем расположение оставшихся элементов
+                    Form1_Resize(this, EventArgs.Empty);
+                }
+            }
+        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -368,6 +406,11 @@ namespace wfaCompare
                     tmp_box.Invalidate();
                 }
             }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            ;
         }
     }
 }

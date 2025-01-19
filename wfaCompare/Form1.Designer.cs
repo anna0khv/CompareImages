@@ -144,7 +144,7 @@
             Controls.Add(checkBox1);
             Controls.Add(button1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Сравнение изображений";
             ResumeLayout(false);
             PerformLayout();
         }

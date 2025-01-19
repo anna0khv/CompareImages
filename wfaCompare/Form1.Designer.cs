@@ -36,6 +36,10 @@
             checkBox5 = new CheckBox();
             button2 = new Button();
             checkBox6 = new CheckBox();
+            panel1 = new Panel();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -112,7 +116,7 @@
             // 
             button2.Location = new Point(732, 12);
             button2.Name = "button2";
-            button2.Size = new Size(188, 54);
+            button2.Size = new Size(117, 54);
             button2.TabIndex = 6;
             button2.Text = "Отменить все изменения";
             button2.UseVisualStyleBackColor = true;
@@ -130,11 +134,46 @@
             checkBox6.UseVisualStyleBackColor = true;
             checkBox6.CheckedChanged += checkBox6_CheckedChanged;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(radioButton2);
+            panel1.Controls.Add(radioButton1);
+            panel1.Location = new Point(864, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(129, 54);
+            panel1.TabIndex = 11;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(3, 28);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(79, 24);
+            radioButton2.TabIndex = 13;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Плитка";
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
+            radioButton1.Location = new Point(3, 2);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(120, 24);
+            radioButton1.TabIndex = 12;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Вертикально";
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1004, 450);
+            ClientSize = new Size(1015, 450);
+            Controls.Add(panel1);
             Controls.Add(checkBox6);
             Controls.Add(button2);
             Controls.Add(checkBox5);
@@ -145,6 +184,8 @@
             Controls.Add(button1);
             Name = "Form1";
             Text = "Сравнение изображений";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -159,5 +200,8 @@
         private CheckBox checkBox5;
         private Button button2;
         private CheckBox checkBox6;
+        private Panel panel1;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
     }
 }

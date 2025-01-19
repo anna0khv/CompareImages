@@ -13,9 +13,8 @@ namespace wfaCompare
         public List<PictureBox> pictureBoxes = new List<PictureBox>();
         public List<Label> textBoxes = new List<Label>();
         public List<Bitmap> bitmaps = new List<Bitmap>();
-
         public List<System.Windows.Forms.Button> buttons = new List<System.Windows.Forms.Button>();
-        
+        public bool VERTICAL = true;
         public void SetImage(PictureBox pb)
         {
             pictureBoxes.Add(pb);
@@ -36,7 +35,8 @@ namespace wfaCompare
             bitmaps.Add(bmp);
         }
 
-        public (List<PictureBox>, List<Label>, List<System.Windows.Forms.Button>) ShowImages(Form form)
+        public (List<PictureBox>, List<Label>, List<System.Windows.Forms.Button>) 
+            ShowImages(Form form)
         {
 
             int counter = 0;
@@ -62,20 +62,65 @@ namespace wfaCompare
 
             int count_pbs = pictureBoxes.Count; // количество картинок
 
-            
-            var image_h = form.Height - y_start - x_start - 50;
-            var nw = bitmaps[0].Width * image_h / bitmaps[0].Height;
-            var tmp_w = (form.Width) / count_pbs - 2 * x_start;
 
-            var image_w = count_pbs > 1 || nw > tmp_w ?
+            int image_h, image_w, nw, tmp_w;
+            
+            image_h = form.Height - y_start - x_start - 50;
+            nw = bitmaps[0].Width * image_h / bitmaps[0].Height;
+            tmp_w = (form.Width) / count_pbs - 2 * x_start;
+            image_w = count_pbs > 1 || nw > tmp_w ?
                 tmp_w
                 : nw;
+
+            if (!VERTICAL) {
+                if (count_pbs == 1)
+                {
+                    ;
+                }
+                else
+                {
+                    image_h = count_pbs <= 2 ?
+                        form.Height - y_start - x_start - 50
+                        : (form.Height - y_start - 50 - x_start - 30) / 2;
+
+                    nw = bitmaps[0].Width * image_h / bitmaps[0].Height;
+                    tmp_w = (form.Width) / count_pbs - 2 * x_start;
+
+                    image_w = 
+                        (form.Width) / 2 - 2 * x_start;
+                }
+            }
+               
+            
 
             foreach (PictureBox pb in pictureBoxes)
             {
                 int index = pictureBoxes.IndexOf(pb);
-                x = x_start + index * (image_w +  delta_x);
+                
 
+                if (!VERTICAL)
+                {
+                    switch(counter)
+                    {
+                        case 0:
+                            x = x_start;
+                            y = y_start;
+                            break;
+                        case 1:
+                            x += image_w + delta_x;
+                            break;
+                        case 2:
+                            x = x_start;
+                            y += image_h + delta_y;
+                            break;
+                        case 3:
+                            x += image_w + delta_x;
+                            break;
+                    }
+                } else
+                {
+                    x = x_start + index * (image_w + delta_x);
+                }
                 pb.Location = new Point(x, y);
                 pb.SizeMode = PictureBoxSizeMode.Normal;
                 pb.Size = new Size(image_w, image_h);

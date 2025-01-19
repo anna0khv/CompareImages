@@ -16,16 +16,33 @@ namespace wfaCompare
         private void Form1_Resize(object? sender, EventArgs e)
         {
             if (ic.pictureBoxes.Count > 0)
-            {float nh = ic.bitmaps[0].Height;
-            _defaultZoomFactor = (this.Height - 140) / nh;
-            _zoomFactor = _defaultZoomFactor;
-            for (int i = 0; i < 4; i++)
             {
-                zoomMas[i] = _defaultZoomFactor;
-            }
+                //if (ic.VERTICAL)
+                //{
+                    float nh = ic.bitmaps[0].Height;
+                    _defaultZoomFactor = (this.Height - 140) / nh;
+                    if (!ic.VERTICAL && ic.bitmaps.Count() != 1)
+                    {
+                        nh = ic.bitmaps[0].Width;
+                        _defaultZoomFactor =
+                            ((this.Width / 2) - 10) / (nh);
+                    }
+                //} else
+                //{
+                //    float nh = ic.bitmaps[0].Width;
+                //    _defaultZoomFactor = 
+                //        ((this.Width / 2) - 10) / (nh);
+                //}
+                _zoomFactor = _defaultZoomFactor;
+                for (int i = 0; i < 4; i++)
+                {
+                    zoomMas[i] = _defaultZoomFactor;
+                }
 
-            ic.ShowImages(this);
-                button2_Click(sender, e);
+                ic.ShowImages(this);
+                //button2_Click(sender, e);
+                foreach (PictureBox pb in ic.pictureBoxes)
+                    pb.Invalidate();
             }
 
         }
@@ -34,8 +51,8 @@ namespace wfaCompare
         public Point cursorPosition;
         public int rad = 10;
 
-        private float _zoomFactor = 1.0f; 
-        private float _defaultZoomFactor = 1.0f; 
+        private float _zoomFactor = 1.0f;
+        private float _defaultZoomFactor = 1.0f;
         private Point _imagePosition = new Point(0, 0);
         private bool _isDragging = false;
         private Point _dragStart;
@@ -54,14 +71,21 @@ namespace wfaCompare
             {
                 PictureBox pb1 = new PictureBox();
                 var temp_bm = new Bitmap(dlg.FileName);
-
                 if (isFirst)
                 {
-                    //float nw = temp_bm.Width;
-                    float nh = temp_bm.Height;
-                    _defaultZoomFactor = (this.Height - 140) / nh;
+                    //if (ic.VERTICAL)
+                    //{
+                        float nh = temp_bm.Height;
+                        _defaultZoomFactor = (this.Height - 140) / nh;
+                        //if (ic.bitmaps.Count() > 1 && !ic.VERTICAL)
+                        //{
+                        //}
+                    //else
+                    //{
+                    //    float nh = temp_bm.Width;
+                    //    _defaultZoomFactor = ((this.Width / 2) - 10) / (nh);
+                    //}
 
-                    //_defaultZoomFactor = 500.0f / nw;
                     _zoomFactor = _defaultZoomFactor;
                     for (int i = 0; i < 4; i++)
                     {
@@ -70,12 +94,15 @@ namespace wfaCompare
                     isFirst = false;
                 }
 
+
                 pb1.Image = null; // Очищаем изображение, чтобы оно не отображалось автоматически
                 pb1.SizeMode = PictureBoxSizeMode.Normal; // Устанавливаем Normal
 
                 ic.SetImage(pb1);
                 ic.SetLabel(dlg.FileName, temp_bm);
                 ic.SetBitmaps(temp_bm);
+
+                
 
                 (List<PictureBox> pbs, List<Label> tbs, List<System.Windows.Forms.Button> btns) = ic.ShowImages(this);  // получение координат изображений
 
@@ -296,7 +323,8 @@ namespace wfaCompare
 
                 //_zoomFactor = Math.Max(0.1f, Math.Min(5.0f, _zoomFactor));
                 zoomMas[index] = Math.Max(0.1f, Math.Min(5.0f, zoomMas[index]));
-                if (Sync) {
+                if (Sync)
+                {
                     _zoomFactor = zoomMas[index];
                     for (int i = 0; i < 4; i++)
                     {
@@ -411,6 +439,30 @@ namespace wfaCompare
         private void Button_Click(object sender, EventArgs e)
         {
             ;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                ic.VERTICAL = true;
+                //ic.ShowImages(this);
+                //foreach (PictureBox pb in ic.pictureBoxes)
+                //    pb.Invalidate();
+                Form1_Resize(this, EventArgs.Empty);
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                ic.VERTICAL = false;
+                //ic.ShowImages(this);
+                //foreach (PictureBox pb in ic.pictureBoxes)
+                //    pb.Invalidate();
+                Form1_Resize(this, EventArgs.Empty);
+            }
         }
     }
 }

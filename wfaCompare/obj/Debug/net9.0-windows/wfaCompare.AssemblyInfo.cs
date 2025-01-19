@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("wfaCompare")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68484932bbd2a3bb1867d41b1b3828b5e621eaef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f817515998b199ff025c7a1e8a7d3d135331fa4")]
 [assembly: System.Reflection.AssemblyProductAttribute("wfaCompare")]
 [assembly: System.Reflection.AssemblyTitleAttribute("wfaCompare")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

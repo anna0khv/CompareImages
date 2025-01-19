@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\school\\5sem\\mobile\\compare images\\wfaCompare — копия\\wfaCompare\\wfaCompare.csproj": {}
+    "D:\\school\\5sem\\mobile\\compare images\\CompareImages\\wfaCompare\\wfaCompare.csproj": {}
   },
   "projects": {
-    "D:\\school\\5sem\\mobile\\compare images\\wfaCompare — копия\\wfaCompare\\wfaCompare.csproj": {
+    "D:\\school\\5sem\\mobile\\compare images\\CompareImages\\wfaCompare\\wfaCompare.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\school\\5sem\\mobile\\compare images\\wfaCompare — копия\\wfaCompare\\wfaCompare.csproj",
+        "projectUniqueName": "D:\\school\\5sem\\mobile\\compare images\\CompareImages\\wfaCompare\\wfaCompare.csproj",
         "projectName": "wfaCompare",
-        "projectPath": "D:\\school\\5sem\\mobile\\compare images\\wfaCompare — копия\\wfaCompare\\wfaCompare.csproj",
+        "projectPath": "D:\\school\\5sem\\mobile\\compare images\\CompareImages\\wfaCompare\\wfaCompare.csproj",
         "packagesPath": "C:\\Users\\anna1\\.nuget\\packages\\",
-        "outputPath": "D:\\school\\5sem\\mobile\\compare images\\wfaCompare — копия\\wfaCompare\\obj\\",
+        "outputPath": "D:\\school\\5sem\\mobile\\compare images\\CompareImages\\wfaCompare\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

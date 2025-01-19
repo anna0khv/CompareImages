@@ -35,8 +35,6 @@ namespace wfaCompare
 
         }
 
-        setPanel()
-
         public (List<PictureBox>, List<Label>) ShowImages()
         {
 

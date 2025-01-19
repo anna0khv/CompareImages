@@ -34,6 +34,8 @@
             checkBox3 = new CheckBox();
             checkBox4 = new CheckBox();
             checkBox5 = new CheckBox();
+            button2 = new Button();
+            checkBox6 = new CheckBox();
             SuspendLayout();
             // 
             // button1
@@ -106,11 +108,35 @@
             checkBox5.UseVisualStyleBackColor = true;
             checkBox5.CheckedChanged += checkBox5_CheckedChanged;
             // 
+            // button2
+            // 
+            button2.Location = new Point(732, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(188, 54);
+            button2.TabIndex = 6;
+            button2.Text = "Отменить все изменения";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // checkBox6
+            // 
+            checkBox6.AutoSize = true;
+            checkBox6.Enabled = false;
+            checkBox6.Location = new Point(584, 43);
+            checkBox6.Name = "checkBox6";
+            checkBox6.Size = new Size(142, 24);
+            checkBox6.TabIndex = 7;
+            checkBox6.Text = "Синхронизация";
+            checkBox6.UseVisualStyleBackColor = true;
+            checkBox6.CheckedChanged += checkBox6_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1004, 450);
+            Controls.Add(checkBox6);
+            Controls.Add(button2);
             Controls.Add(checkBox5);
             Controls.Add(checkBox4);
             Controls.Add(checkBox3);
@@ -131,5 +157,7 @@
         private CheckBox checkBox3;
         private CheckBox checkBox4;
         private CheckBox checkBox5;
+        private Button button2;
+        private CheckBox checkBox6;
     }
 }

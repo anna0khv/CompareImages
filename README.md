@@ -1,2 +1,19 @@
 # CompareImages
-A manual image comparison project for the mobile development discipline 
+A manual image comparison project for the mobile development discipline. / Студенческий проект для дисциплины "Мобильная разработка".
+
+# Приложение для ручного сравнения изображений. 
+
+Идеально подходит для сравнения документов, чертежей, крупных изображений.
+Позволяет добавлять до 4 изображений, использовать различные инструменты сравнения, например, линии, следующие за курсором, приближение и перемещение изображений, не изменяя сами файлы изображений.  
+
+Пример работы:
+
+![image](https://github.com/user-attachments/assets/a6f7a620-78aa-48ad-8fe4-722b5f1f0717)
+
+Используя клавишу `shift` и колесо мыши, можно изменить размер круга. 
+
+![image](https://github.com/user-attachments/assets/be0bc998-6c81-4a24-918b-a6751fa8ccaa)
+
+Также приложение позволяет изменять размер и цвет линий для сравнения.
+
+![image](https://github.com/user-attachments/assets/fa521d27-ea09-479b-85ba-1f4891dd60aa)
